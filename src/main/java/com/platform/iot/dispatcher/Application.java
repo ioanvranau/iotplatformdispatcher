@@ -33,9 +33,6 @@ import com.platform.iot.dispatcher.ws.EchoWebSocketHandler;
 @PropertySource("classpath:application.properties")
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"com.platform.iot.dispatcher.model"})
-@EnableJpaRepositories(basePackages = {"com.platform.iot.dispatcher.dao"})
-@EnableTransactionManagement
 @EnableWebSocket
 public class Application extends SpringBootServletInitializer
         implements WebSocketConfigurer {
