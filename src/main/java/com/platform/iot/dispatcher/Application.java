@@ -21,6 +21,9 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import com.platform.iot.dispatcher.ws.DeviceEchoService;
 import com.platform.iot.dispatcher.ws.EchoService;
 import com.platform.iot.dispatcher.ws.EchoWebSocketHandler;
+//import org.springframework.web.servlet.config.annotation.CorsRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Created by ioan.vranau on 1/4/2016.
@@ -30,8 +33,8 @@ import com.platform.iot.dispatcher.ws.EchoWebSocketHandler;
 @PropertySource("classpath:application.properties")
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"com.platform.iot"})
-@EnableJpaRepositories(basePackages = {"com.platform.iot"})
+@EntityScan(basePackages = {"com.platform.iot.model"})
+@EnableJpaRepositories(basePackages = {"com.platform.iot.dao"})
 @EnableTransactionManagement
 @EnableWebSocket
 public class Application extends SpringBootServletInitializer
@@ -40,6 +43,18 @@ public class Application extends SpringBootServletInitializer
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurerAdapter() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                //https://spring.io/blog/2015/06/08/cors-support-in-spring-framework
+//                //https://spring.io/blog/2015/06/08/cors-support-in-spring-framework
+//                registry.addMapping("/**").allowedOrigins("*").allowedMethods("PUT", "DELETE", "GET", "POST", "OPTIONS");
+//            }
+//        };
+//    }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
@@ -65,7 +80,6 @@ public class Application extends SpringBootServletInitializer
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
     }
-
 
     @Bean
     public ServletRegistrationBean h2servletRegistration() {

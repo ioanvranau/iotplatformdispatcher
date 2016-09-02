@@ -1,4 +1,3 @@
-
 package com.platform.iot.dispatcher.ws;
 
 public class DeviceEchoService implements EchoService {
