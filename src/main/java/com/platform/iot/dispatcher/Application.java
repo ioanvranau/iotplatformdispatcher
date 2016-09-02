@@ -40,7 +40,7 @@ public class Application extends SpringBootServletInitializer
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(echoWebSocketHandler(), "/echo").setAllowedOrigins("*").withSockJS();
+        registry.addHandler(echoWebSocketHandler(), "/echo").setAllowedOrigins("*");
 //        registry.addHandler(echoWebSocketHandler(), "/echo/info").setAllowedOrigins("*").withSockJS();
     }
 
