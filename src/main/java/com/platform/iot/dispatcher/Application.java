@@ -43,7 +43,8 @@ public class Application extends SpringBootServletInitializer
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         final WebSocketHandlerRegistration webSocketHandlerRegistration = registry.addHandler(echoWebSocketHandler(), "/echo");
-        webSocketHandlerRegistration.setAllowedOrigins("*", "http://localhost:8080").withSockJS();
+        webSocketHandlerRegistration.setAllowedOrigins("*", "http://localhost:8080");
+        webSocketHandlerRegistration.withSockJS();
 //        registry.addHandler(echoWebSocketHandler(), "/echo/info").setAllowedOrigins("*").withSockJS();
     }
 
@@ -72,7 +73,7 @@ public class Application extends SpringBootServletInitializer
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**");
+                registry.addMapping("/**").allowedOrigins("http://localhost:8080", "http://127.0.0.1:8080", "*");
             }
         };
     }
