@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.google.common.collect.Lists;
-import com.platform.iot.dispatcher.model.Device;
 
 @RestController
 public class DeviceController {
@@ -25,4 +24,23 @@ public class DeviceController {
     }
 
 
+    private class Device {
+        String name;
+
+        public Device() {
+        }
+
+        public Device(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
