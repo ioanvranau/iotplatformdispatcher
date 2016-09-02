@@ -1,4 +1,4 @@
-package com.platform.iot.dispatcher.utils;
+package com.platform.iot.utils;
 
 import java.io.IOException;
 import javax.servlet.Filter;

@@ -1,4 +1,4 @@
-package com.platform.iot.dispatcher;
+package com.platform.iot;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +18,9 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
-import com.platform.iot.dispatcher.ws.DeviceEchoService;
-import com.platform.iot.dispatcher.ws.EchoService;
-import com.platform.iot.dispatcher.ws.EchoWebSocketHandler;
+import com.platform.iot.ws.DeviceEchoService;
+import com.platform.iot.ws.EchoService;
+import com.platform.iot.ws.EchoWebSocketHandler;
 //import org.springframework.web.servlet.config.annotation.CorsRegistry;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -87,4 +87,5 @@ public class Application extends SpringBootServletInitializer
         registration.addUrlMappings("/console/*");
         return registration;
     }
+
 }

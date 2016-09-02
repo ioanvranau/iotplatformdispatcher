@@ -15,7 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <start-class>com.platform.iot.dispatcher.Application</start-class>
+        <start-class>com.platform.iot.Application</start-class>
         <spring.version>4.3.2.RELEASE</spring.version>
         <spring.boot.version>1.4.0.RELEASE</spring.boot.version>
         <h2.version>1.4.191</h2.version>
@@ -66,6 +66,8 @@
             <artifactId>spring-messaging</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+
     </dependencies>
 
     <build>
@@ -81,7 +83,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.platform.iot.dispatcher.Application</mainClass>
+                            <mainClass>com.platform.iot.Application</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
