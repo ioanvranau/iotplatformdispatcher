@@ -32,7 +32,6 @@ import com.platform.iot.dispatcher.ws.EchoWebSocketHandler;
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
 @Configuration
-@EnableAutoConfiguration
 @EnableWebSocket
 public class Application extends SpringBootServletInitializer
         implements WebSocketConfigurer {
