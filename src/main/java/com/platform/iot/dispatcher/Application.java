@@ -16,6 +16,7 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.SockJsServiceRegistration;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistration;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import com.platform.iot.dispatcher.ws.DeviceEchoService;
@@ -41,7 +42,8 @@ public class Application extends SpringBootServletInitializer
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS();
+        final WebSocketHandlerRegistration webSocketHandlerRegistration = registry.addHandler(echoWebSocketHandler(), "/echo");
+        webSocketHandlerRegistration.setAllowedOrigins("*", "http://localhost:8080").withSockJS();
 //        registry.addHandler(echoWebSocketHandler(), "/echo/info").setAllowedOrigins("*").withSockJS();
     }
 
