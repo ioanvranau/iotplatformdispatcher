@@ -17,27 +17,8 @@ public class DeviceService {
     @Autowired
     DeviceRepository deviceRepository;
 
-    @Autowired
-    private LocationService locationService;
-
-    @Autowired
-    private AccessRightsService accessRightsService;
-
     public List<Device> getAllDevices() {
         return Lists.newArrayList(deviceRepository.findAll());
     }
 
-    public Device getDeviceById(Long id) {
-        return deviceRepository.findOne(id);
-    }
-
-
-    public void deleteDevice(long deviceId) {
-        Device device = deviceRepository.findOne(deviceId);
-        if (device != null) {
-            deviceRepository.delete(deviceId);
-        } else {
-            throw new IotException("No device provided!");
-        }
-    }
 }
