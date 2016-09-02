@@ -32,8 +32,9 @@ public class GreetingController {
     }
 
     public void fireGreeting() {
-        System.out.println("Message from server! " + Math.random());
-        this.template.convertAndSend("/topic/greetings", new Greeting("Fire"));
+        final String generatedMessage = "Message from server! " + Math.random();
+        System.out.println(generatedMessage);
+        this.template.convertAndSend("/topic/greetings", new Greeting(generatedMessage));
     }
 
 }
