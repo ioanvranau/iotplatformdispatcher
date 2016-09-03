@@ -18,17 +18,24 @@ import com.platform.iot.dispatcher.utils.ThreadPool;
 public class DeviceController {
 
 
+    @Autowired
+    private SimpMessagingTemplate template;
+
     @MessageMapping("/init")
     @SendTo("/topic/initDevices")
     @CrossOrigin(origins = "*")
     public ServerResponse initDevice(InitDeviceMessage initDeviceMessage) throws Exception { //this method is called when @MessageMapping
 
         final String content;
-        if(initDeviceMessage.isDisconnect()) {
+        if (initDeviceMessage.isDisconnect()) {
             final DeviceInformationThread deviceInformationThread = ThreadPool.THREAD_MAP.get(initDeviceMessage.getDeviceId());
-            deviceInformationThread.stop();
-            ThreadPool.THREAD_MAP.remove(initDeviceMessage.getDeviceId());
-            content = "Disconnected from real device: " + initDeviceMessage.getDeviceName();
+            if (deviceInformationThread != null) {
+                deviceInformationThread.stop();
+                ThreadPool.THREAD_MAP.remove(initDeviceMessage.getDeviceId());
+                content = "Disconnected from real device: " + initDeviceMessage.getDeviceName();
+            } else {
+                content = "Cannot disconnect device!";
+            }
         } else {
             if (connectToRealDevice(initDeviceMessage)) {
                 content = "Successfully connected to the real device: " + initDeviceMessage.getDeviceName() +
@@ -49,15 +56,11 @@ public class DeviceController {
         return true;
     }
 
-    @Autowired
-    private SimpMessagingTemplate template;
-
     public void fireGreeting() {
         final String generatedMessage = "Message from server! " + Math.random();
         System.out.println(generatedMessage);
-        this.template.convertAndSend("/topic/initDevices", new ServerResponse(generatedMessage));
+        this.template.convertAndSend("/topic/accSensor", new ServerResponse(generatedMessage));
     }
-
 
 
 }

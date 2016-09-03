@@ -20,7 +20,9 @@ public class DeviceInformationThread implements Runnable {
         while (running) {
             try {
                 Thread.sleep(3000);
-                listener.fireGreeting();
+                if(running) {
+                    listener.fireGreeting();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
