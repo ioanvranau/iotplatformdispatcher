@@ -17,12 +17,12 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic");
-        config.setApplicationDestinationPrefixes("/app");
+        config.setApplicationDestinationPrefixes("/iot");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        final StompWebSocketEndpointRegistration stompWebSocketEndpointRegistration = registry.addEndpoint("*", "/gs-guide-websocket");
+        final StompWebSocketEndpointRegistration stompWebSocketEndpointRegistration = registry.addEndpoint("*", "/iot-dispatcher-websocket");
         stompWebSocketEndpointRegistration.setAllowedOrigins("*");
         stompWebSocketEndpointRegistration.withSockJS();
     }

@@ -3,14 +3,14 @@ package com.platform.iot.dispatcher.messages;
 /**
  * Created by ioan.vranau on 9/2/2016.
  */
-public class Greeting {
+public class ServerResponse {
 
     private String content;
 
-    public Greeting() {
+    public ServerResponse() {
     }
 
-    public Greeting(String content) {
+    public ServerResponse(String content) {
         this.content = content;
     }
 
