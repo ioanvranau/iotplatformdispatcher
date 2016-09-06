@@ -56,10 +56,8 @@ public class DeviceController {
         return true;
     }
 
-    public void fireGreeting() {
-        final String generatedMessage = "Message from server! " + Math.random();
-        System.out.println(generatedMessage);
-        this.template.convertAndSend("/topic/accSensor", new ServerResponse(generatedMessage));
+    public void sendMessageToTopic(String topic, String message) {
+        this.template.convertAndSend(topic, new ServerResponse(message));
     }
 
 
