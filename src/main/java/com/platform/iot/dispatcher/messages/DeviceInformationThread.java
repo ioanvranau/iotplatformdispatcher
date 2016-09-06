@@ -3,6 +3,7 @@ package com.platform.iot.dispatcher.messages;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import com.platform.iot.dispatcher.controller.DeviceController;
@@ -52,6 +53,13 @@ public class DeviceInformationThread implements Runnable {
         MqttClient mqttClient = null;
         try {
             mqttClient = getMqttClientConnection(CLIENT_ID);
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            connOpts.setUserName(USER_NAME);
+            connOpts.setPassword(PASSWORD.toCharArray());
+            if(!mqttClient.isConnected()) {
+                mqttClient.connect(connOpts);
+            }
             initCallBack(mqttClient);
             mqttClient.subscribe(TOPIC, QOS);
         } catch (MqttException e) {

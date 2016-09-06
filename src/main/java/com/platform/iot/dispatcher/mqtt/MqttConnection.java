@@ -54,8 +54,6 @@ public class MqttConnection {
             e.printStackTrace();
         }
         mqttClient.disconnect();
-
-
     }
 
     public static void sendMessageToTopic(String content, MqttClient mqttClient) throws MqttException {
@@ -71,11 +69,6 @@ public class MqttConnection {
         if (mqttClient == null) {
             MemoryPersistence persistence = new MemoryPersistence();
             mqttClient = new MqttClient(BROKER, clientId, persistence);
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true);
-            connOpts.setUserName(USER_NAME);
-            connOpts.setPassword(PASSWORD.toCharArray());
-            mqttClient.connect(connOpts);
         }
         return mqttClient;
     }
