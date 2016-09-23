@@ -49,7 +49,6 @@ public class DeviceInformationThread implements Runnable {
 
     @Override
     public void run() {
-//                Thread.sleep(3000);
         MqttClient mqttClient = null;
         try {
             mqttClient = getMqttClientConnection(CLIENT_ID);
