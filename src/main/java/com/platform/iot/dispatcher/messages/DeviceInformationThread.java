@@ -67,7 +67,7 @@ public class DeviceInformationThread implements Runnable {
 
         while (running) {
             if (running) {
-                String message = "No message received!";
+                String message;
                 if (receivedMessage != null) {
                     message = new String(receivedMessage.getPayload());
                     receivedMessage = null;

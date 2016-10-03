@@ -59,6 +59,4 @@ public class DeviceController {
     public void sendMessageToTopic(String topic, String message) {
         this.template.convertAndSend(topic, new ServerResponse(message));
     }
-
-
 }

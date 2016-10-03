@@ -7,18 +7,18 @@ package com.platform.iot.dispatcher.messages;
 public class InitDeviceMessage {
 
     private String deviceName;
-    private Long deviceId;
+    private String deviceId;
     private String deviceIp;
     private boolean disconnect;
 
     public InitDeviceMessage() {
     }
 
-    public Long getDeviceId() {
+    public String getDeviceId() {
         return deviceId;
     }
 
-    public void setDeviceId(Long deviceId) {
+    public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
 
