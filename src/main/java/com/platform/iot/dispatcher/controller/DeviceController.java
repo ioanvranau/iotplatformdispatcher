@@ -32,14 +32,13 @@ public class DeviceController {
             if (deviceInformationThread != null) {
                 deviceInformationThread.stop();
                 ThreadPool.THREAD_MAP.remove(initDeviceMessage.getDeviceId());
-                content = "Disconnected from real device: " + initDeviceMessage.getDeviceName();
+                content = "Disconnected from real device: " + initDeviceMessage.getDeviceId();
             } else {
                 content = "Cannot disconnect device!";
             }
         } else {
             if (connectToRealDevice(initDeviceMessage)) {
-                content = "Successfully connected to the real device: " + initDeviceMessage.getDeviceName() +
-                        " with ip: " + initDeviceMessage.getDeviceIp() + "!";
+                content = "Successfully connected to the real device: " + initDeviceMessage.getDeviceId() + "!";
 
                 DeviceInformationThread deviceInformationThread = new DeviceInformationThread(this);
                 ThreadPool.THREAD_MAP.put(initDeviceMessage.getDeviceId(), deviceInformationThread);
