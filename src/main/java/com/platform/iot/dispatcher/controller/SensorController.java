@@ -21,7 +21,7 @@
 //    @MessageMapping("/acc")
 //    @SendTo("/topic/accSensor")
 //    @CrossOrigin(origins = "*")
-//    public ServerResponse initDevice(InitDeviceMessage initDeviceMessage) throws Exception { //this method is called when @MessageMapping
+//    public ServerResponse initDispatcher(InitDeviceMessage initDeviceMessage) throws Exception { //this method is called when @MessageMapping
 //
 //        final String content = "";
 //        return new ServerResponse(content); // this is sent to @SendTo topic

@@ -7,6 +7,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import com.platform.iot.dispatcher.controller.DeviceController;
+import com.platform.iot.dispatcher.utils.Topics;
 import static com.platform.iot.dispatcher.mqtt.MqttConnection.*;
 
 /**
@@ -56,11 +57,11 @@ public class DeviceInformationThread implements Runnable {
             connOpts.setCleanSession(true);
             connOpts.setUserName(USER_NAME);
             connOpts.setPassword(PASSWORD.toCharArray());
-            if(!mqttClient.isConnected()) {
+            if (!mqttClient.isConnected()) {
                 mqttClient.connect(connOpts);
             }
             initCallBack(mqttClient);
-            mqttClient.subscribe(TOPIC, QOS);
+            mqttClient.subscribe(Topics.MQTT.IOT_ANDROID, QOS);
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -71,7 +72,7 @@ public class DeviceInformationThread implements Runnable {
                 if (receivedMessage != null) {
                     message = new String(receivedMessage.getPayload());
                     receivedMessage = null;
-                    listener.sendMessageToTopic("/topic/accSensor", message);
+                    listener.sendMessageToTopic(Topics.WS.TOPIC_ACC_SENSOR, message);
                 }
                 try {
                     Thread.sleep(3000);

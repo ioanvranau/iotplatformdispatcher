@@ -1,10 +1,10 @@
 package com.platform.iot.dispatcher.mqtt;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import com.platform.iot.dispatcher.utils.Topics;
 
 /**
  * Created by ioan.vranau on 9/3/2016.
@@ -18,7 +18,6 @@ public class MqttConnection {
     public static final int QOS = 1;
     public static final String PROTOCOL = "tcp";
     public static final String BROKER = PROTOCOL + "://" + SERVER + ":" + PORT;
-    public static final String TOPIC = "iotandroid";
     public static final String CLIENT_ID = "ClientId_1";
     private static MqttClient mqttClient;
 
@@ -61,7 +60,7 @@ public class MqttConnection {
         MqttMessage message = new MqttMessage(content.getBytes());
         message.setQos(QOS);
         System.out.println("Publish message: " + message);
-        mqttClient.publish(TOPIC, message);
+        mqttClient.publish(Topics.MQTT.IOT_ANDROID, message);
     }
 
 
