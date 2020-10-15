@@ -1,1 +1,1 @@
-# iotplatformdispatcher dispatcher
+# iotplatformdispatcher
